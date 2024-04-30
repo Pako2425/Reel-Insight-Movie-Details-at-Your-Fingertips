@@ -5,46 +5,42 @@ import MainPage from './MainPage.jsx'
 
 function App(): React.JSX.Element {
 
+    const [searchBarText, setSearchBarText] = useState("");
     const [apiRequest, setApiRequest] = useState("");
     const [film, setFilm] = useState("");
 
-    async function getData(event) {
-        setApiRequest('http://www.omdbapi.com/?apikey=c9bb574f&s='
-            + event.nativeEvent.text.toLowerCase())
+    async function getData(movieTitle) {
+        let apiRequest = 'http://www.omdbapi.com/?apikey=c9bb574f&s=' + movieTitle;
         try{
             let response = await fetch(apiRequest);
             let data = await response.json();
             await setFilm(data["Search"]["1"]["Year"]);
+            await alert(film);
         }
         catch(error) {
-            alert(apiRequest);
+            alert(`Can't find your movie: \"${searchBarText}\"
+            \nPlease check your title or internet connection.`);
         }
     }
 
-  return (
-    <View style={styles.container}>
-        <TextInput
-            style={styles.searchBar}
-            inputMode='text'
-            placeholder={"type movie title..."}
-            onSubmitEditing={
-                //(event) => setApiRequest('http://www.omdbapi.com/?apikey=c9bb574f&s='
-                //    + event.nativeEvent.text.toLowerCase())
-                //setFilm(getData(apiRequest))
-
-                (event) => getData(event)
-            }
-
-        />
-        <TouchableHighlight
-            underlayColor={'rgb(168, 113, 10)'}
-            style={styles.searchButton}
-            onPress={() => alert('Pressed!')}>
-            <Text style={{color: 'white', fontSize: 15}}>Search</Text>
-        </TouchableHighlight>
-        <Text style={{color: 'white', fontSize: 10}}>{film}</Text>
-    </View>
-  );
+    return (
+        <View style={styles.container}>
+            <TextInput
+                style={styles.searchBar}
+                inputMode='text'
+                maxLength={50}
+                onChangeText={setSearchBarText}
+                value={searchBarText}
+                placeholder={"type movie title..."}
+            />
+            <TouchableHighlight
+                underlayColor={'rgb(168, 113, 10)'}
+                style={styles.searchButton}
+                onPress={() => getData(searchBarText)}>
+                <Text style={{color: 'white', fontSize: 15}}>Search</Text>
+            </TouchableHighlight>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
