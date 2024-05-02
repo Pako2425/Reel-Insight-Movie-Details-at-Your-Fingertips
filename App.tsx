@@ -53,6 +53,7 @@ function MainPage({navigation}) {
 
     async function getData(movieTitle) {
         let apiRequest = 'http://www.omdbapi.com/?apikey=c9bb574f&s=' + movieTitle.toLowerCase();
+        movies.length = 0;
         try {
             let response = await fetch(apiRequest);
             data = await response.json();
