@@ -48,6 +48,38 @@ const moviesTest = [{
                         "poster": "https://m.media-amazon.com/images/M/MV5BYzA4ZjVhYzctZmI0NC00ZmIxLWFmYTgtOGIxMDYxODhmMGQ2XkEyXkFqcGdeQXVyNjExODE1MDc@._V1_SX300.jpg"
                     }];
 
+let movieDetails = null;
+
+const movieDetailsTest = {
+                       "title": "The Avengers: Earth's Mightiest Heroes",
+                       "year": "2010–2012",
+                       "rated": "TV-Y7",
+                       "released": "22 Sep 2010",
+                       "runtime": "30 min",
+                       "genre": "Animation, Action, Adventure",
+                       "director": "N/A",
+                       "writer": "N/A",
+                       "actors": "Eric Loomis, Colleen O'Shaughnessey, Brian Bloom",
+                       "plot": "After 74 villains break out of prison, Marvel's most powerful superheroes team up to capture all of them, and also to defend the Earth from widespread threats.",
+                       "language": "English",
+                       "country": "United States",
+                       "awards": "8 nominations",
+                       "poster": "https://m.media-amazon.com/images/M/MV5BYzA4ZjVhYzctZmI0NC00ZmIxLWFmYTgtOGIxMDYxODhmMGQ2XkEyXkFqcGdeQXVyNjExODE1MDc@._V1_SX300.jpg",
+                       "ratings": [
+                           {
+                               "Source": "Internet Movie Database",
+                               "Value": "8.3/10"
+                           }
+                       ],
+                       "Metascore": "N/A",
+                       "imdbRating": "8.3",
+                       "imdbVotes": "16,290",
+                       "imdbID": "tt1626038",
+                       "Type": "series",
+                       "totalSeasons": "2",
+                       "Response": "True"
+                   };
+
 function MainPage({navigation}) {
     const [searchBarText, setSearchBarText] = useState("");
 
@@ -93,22 +125,57 @@ function MainPage({navigation}) {
     );
 }
 
-function ResultsPage(navigation) {
+function ResultsPage({navigation}) {
 
-    const renderItem = ({item}) => {
+    const renderItem = ({item, onPress}) => {
         return(
             <View style={styles.poster}>
-                <Image source={{uri: item.poster}} style={styles.posterImage} resizeMode='contain'/>
-                <Text style={styles.posterText}>{item.title}</Text>
-                <Text style={styles.posterText}>{item.year}</Text>
+                <TouchableHighlight
+                    underlayColor={'rgb(40,40,40)'}
+                    style={{flex: 1}}
+                    onPress={() => getDetails(item.id)}
+                    >
+                    <View style={{flex: 1}}>
+                        <Image source={{uri: item.poster}} style={styles.posterImage} resizeMode='contain'/>
+                        <Text style={styles.posterText}>{item.title}</Text>
+                        <Text style={styles.posterText}>{item.year}</Text>
+                    </View>
+                </TouchableHighlight>
             </View>
         );
+    }
+
+    async function getDetails(movieId) {
+        let apiRequest = 'http://www.omdbapi.com/?apikey=c9bb574f&i=' + movieId;
+        try {
+            let response = await fetch(apiRequest);
+            let data = await response.json();
+            movieDetails = {
+                title: data["Title"],
+                year: data["Year"],
+                rated: data["Rated"],
+                released: data["Released"],
+                runtime: data["Runtime"],
+                genre: data["Genre"],
+                director: data["Director"],
+                writer: data["Writer"],
+                actors: data["Actors"],
+                plot: data["Plot"],
+                language: data["Language"],
+                country: data["Country"],
+                awards: data["Awards"],
+                poster: data["Poster"]
+            };
+            navigation.navigate("DetailsPage");
+        }
+        catch(error) {
+            alert("Something went wrong...");
+        }
     }
 
     return(
         <View style={styles.container}>
             <FlatList
-
                 data={movies}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
@@ -118,19 +185,65 @@ function ResultsPage(navigation) {
     );
 }
 
+function DetailsPage({navigation}) {
+
+    return(
+        <ScrollView style={styles.detailsContainer}>
+            <View style={styles.detailsImageContainer}>
+                <Image
+                    source={{uri: movieDetails.poster}}
+                    style={styles.detailsImage}
+                    resizeMode='contain'/>
+            </View>
+            <View style={styles.detailsTextContainer}>
+                <Text style={styles.detailsMainText}>{movieDetails.title}</Text>
+                <Text style={styles.detailsText}>
+                    {movieDetails.year} |{" "}
+                    {movieDetails.rated} |{" "}
+                    {movieDetails.runtime} |{" "}
+                    {movieDetails.genre}
+                </Text>
+                <Text style={styles.detailsText}>Role: {movieDetails.plot}</Text>
+                <Text style={styles.detailsMainText}>More Details</Text>
+                <Text style={styles.detailsText}>Director: {movieDetails.director}</Text>
+                <Text style={styles.detailsText}>Writer: {movieDetails.writer}</Text>
+                <Text style={styles.detailsText}>Language: {movieDetails.language}</Text>
+                <Text style={styles.detailsText}>Country: {movieDetails.country}</Text>
+                <Text style={styles.detailsText}>Released: {movieDetails.released}</Text>
+                <Text style={styles.detailsText}>Awards: {movieDetails.awards}</Text>
+                <Text style={styles.detailsText}>Actors: {movieDetails.actors}</Text>
+            </View>
+        </ScrollView>
+    );
+}
+
 const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
     return(
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="MainPage" component={MainPage}/>
-                <Stack.Screen name="ResultsPage" component={ResultsPage}/>
-
+                <Stack.Screen
+                    name="MainPage"
+                    component={MainPage}
+                    options={{title: " ", headerShown: false}}
+                />
+                <Stack.Screen
+                    name="ResultsPage"
+                    component={ResultsPage}
+                    options={{title: " ", headerShown: true}}
+                />
+                <Stack.Screen
+                    name="DetailsPage"
+                    component={DetailsPage}
+                    options={{title: " ", headerShown: true}}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );
 }
+
+export default App;
 
 const styles = StyleSheet.create({
     container: {
@@ -186,8 +299,39 @@ const styles = StyleSheet.create({
     posterText: {
         fontSize: 16,
         color: 'white'
+    },
+
+    detailsContainer: {
+        flex: 1,
+        backgroundColor: 'rgb(10,10,10)'
+    },
+
+    detailsImageContainer: {
+        alignItems: 'center',
+        marginTop: 20,
+        marginBottom: 2
+    },
+
+    detailsImage: {
+        width: 300,
+        height: 300
+    },
+
+    detailsTextContainer: {
+        padding: 10
+    },
+
+    detailsMainText: {
+        fontSize: 20,
+        color: 'white',
+        marginTop: 5,
+        marginBottom: 4
+    },
+
+    detailsText: {
+        fontSize: 16,
+        color: 'white',
+        marginBottom: 4
     }
 
 });
-
-export default App;
