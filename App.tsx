@@ -5,80 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const movies = [];
-const moviesTest = [{
-                        "title": "The Avengers",
-                        "year": "2012",
-                        "id": "tt0848228",
-                        "type": "movie",
-                        "poster": "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"
-                    },
-                    {
-                        "title": "Avengers: Endgame",
-                        "year": "2019",
-                        "id": "tt4154796",
-                        "type": "movie",
-                        "poster": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg"
-                    },
-                    {
-                        "title": "Avengers: Infinity War",
-                        "year": "2018",
-                        "id": "tt4154756",
-                        "type": "movie",
-                        "poster": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg"
-                    },
-                    {
-                        "title": "Avengers: Age of Ultron",
-                        "year": "2015",
-                        "id": "tt2395427",
-                        "type": "movie",
-                        "poster": "https://m.media-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg"
-                    },
-                    {
-                        "title": "The Avengers",
-                        "year": "1998",
-                        "id": "tt0118661",
-                        "type": "movie",
-                        "poster": "https://m.media-amazon.com/images/M/MV5BZTQ4NmIzMTktOTdjOC00NzE4LWIzNTgtODkwNzM5ZjUzZDkxXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg"
-                    },
-                    {
-                        "title": "The Avengers: Earth's Mightiest Heroes",
-                        "year": "2010–2012",
-                        "id": "tt1626038",
-                        "type": "series",
-                        "poster": "https://m.media-amazon.com/images/M/MV5BYzA4ZjVhYzctZmI0NC00ZmIxLWFmYTgtOGIxMDYxODhmMGQ2XkEyXkFqcGdeQXVyNjExODE1MDc@._V1_SX300.jpg"
-                    }];
-
 let movieDetails = null;
-
-const movieDetailsTest = {
-                       "title": "The Avengers: Earth's Mightiest Heroes",
-                       "year": "2010–2012",
-                       "rated": "TV-Y7",
-                       "released": "22 Sep 2010",
-                       "runtime": "30 min",
-                       "genre": "Animation, Action, Adventure",
-                       "director": "N/A",
-                       "writer": "N/A",
-                       "actors": "Eric Loomis, Colleen O'Shaughnessey, Brian Bloom",
-                       "plot": "After 74 villains break out of prison, Marvel's most powerful superheroes team up to capture all of them, and also to defend the Earth from widespread threats.",
-                       "language": "English",
-                       "country": "United States",
-                       "awards": "8 nominations",
-                       "poster": "https://m.media-amazon.com/images/M/MV5BYzA4ZjVhYzctZmI0NC00ZmIxLWFmYTgtOGIxMDYxODhmMGQ2XkEyXkFqcGdeQXVyNjExODE1MDc@._V1_SX300.jpg",
-                       "ratings": [
-                           {
-                               "Source": "Internet Movie Database",
-                               "Value": "8.3/10"
-                           }
-                       ],
-                       "Metascore": "N/A",
-                       "imdbRating": "8.3",
-                       "imdbVotes": "16,290",
-                       "imdbID": "tt1626038",
-                       "Type": "series",
-                       "totalSeasons": "2",
-                       "Response": "True"
-                   };
 
 function MainPage({navigation}) {
     const [searchBarText, setSearchBarText] = useState("");
@@ -333,5 +260,4 @@ const styles = StyleSheet.create({
         color: 'white',
         marginBottom: 4
     }
-
 });
