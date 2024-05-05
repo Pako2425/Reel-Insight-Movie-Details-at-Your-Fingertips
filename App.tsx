@@ -170,8 +170,6 @@ function App(): React.JSX.Element {
     );
 }
 
-export default App;
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -261,3 +259,5 @@ const styles = StyleSheet.create({
         marginBottom: 4
     }
 });
+
+export default App;
