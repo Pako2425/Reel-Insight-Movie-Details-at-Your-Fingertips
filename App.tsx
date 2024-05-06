@@ -1,11 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import {View, Text, StyleSheet, TextInput, TouchableHighlight, Button, Image, ScrollView, FlatList} from 'react-native'
 import {NavigationContainer} from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import SQLite from 'react-native-sqlite-storage';
 
 const movies = [];
 let movieDetails = null;
+
+const dbConnection = SQLite.openDatabase({name: 'favorites', location: 'default',});
 
 function MainPage({navigation}) {
     const [searchBarText, setSearchBarText] = useState("");
@@ -144,12 +147,58 @@ function DetailsPage({navigation}) {
     );
 }
 
+function Saved() {
+
+    const readData = () => {
+        dbConnection.transaction(txn => {
+            txn.executeSql('SELECT * FROM favorites',
+            [],
+            (sqlTxn, res) => {
+                for(let i = 0; i < res.rows.length; i++) {
+                    console.log(res.rows.item(i));
+                }
+
+            })
+        })
+    }
+
+    return(
+        <View style={{flex: 1, backgroundColor: 'rgb(20,20,20)'}}>
+        <TextInput
+            inputMode="text"
+            style={{
+                backgroundColor: 'rgb(30,30,30)',
+                color: 'white',
+                borderWidth: 1,
+                borderRadius: 2,
+                padding: 10,
+                height: 34,
+            }}
+            placeholder="value"
+        />
+        <Button title="Get data" onPress={readData}/>
+
+        </View>
+    );
+}
+
 const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
+
+    dbConnection.transaction(tx => {
+        tx.executeSql('CREATE TABLE IF NOT EXISTS favorites(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, movieId TEXT)', [], () => console.log("table created"));
+        tx.executeSql('INSERT INTO favorites (title, movieId) VALUES (?,?)', ['predator', 'qew123'], () => console.log("row inserted"));
+    });
+
     return(
         <NavigationContainer>
             <Stack.Navigator>
+                <Stack.Screen
+                    name="Saved"
+                    component={Saved}
+                    options={{title: " ", headerShown: true}}
+                />
                 <Stack.Screen
                     name="MainPage"
                     component={MainPage}
@@ -165,6 +214,7 @@ function App(): React.JSX.Element {
                     component={DetailsPage}
                     options={{title: " ", headerShown: true}}
                 />
+
             </Stack.Navigator>
         </NavigationContainer>
     );
