@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import {View, Text, TextInput, TouchableHighlight, Button, StyleSheet, FlatList, Image} from 'react-native';
-import {downloadMoviesData} from './Logic.jsx';
+import {downloadMoviesData, downloadMovieDetailsData} from './Logic.jsx';
 
 function ResultsPage({navigation, route}) {
     const {movies} = route.params;
@@ -10,7 +10,13 @@ function ResultsPage({navigation, route}) {
                 <TouchableHighlight
                     underlayColor={'rgb(40,40,40)'}
                     style={{flex: 1}}
-                    onPress={() => /*getDetails(item.id)*/{}}
+                    onPress={() => {
+                        downloadMovieDetailsData(item.id).then(movieDetails => {
+                            if(movieDetails != null) {
+                                navigation.navigate("DetailsPage", {movieDetails});
+                            }
+                        });
+                    }}
                     >
                     <View style={{flex: 1}}>
                         <Image source={{uri: item.poster}} style={styles.posterImage} resizeMode='contain'/>

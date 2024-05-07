@@ -1,10 +1,15 @@
-function DetailsPage({navigation}) {
+import {useState, useEffect} from 'react';
+import {View, Text, TextInput, TouchableHighlight, Button, StyleSheet, FlatList, Image, ScrollView} from 'react-native';
+import {downloadMovieDetailsData} from './Logic.jsx';
 
-    function addMovieToWatchList() {
-        dbConnection.transaction(tx => {
-            tx.executeSql('INSERT INTO toWatchUserList (title, year, movieId) VALUES (?,?,?)', [movieDetails.title, movieDetails.year, movieDetails.movieId], () => console.log("row inserted"));
-        });
-    }
+function DetailsPage({navigation, route}) {
+    const {movieDetails} = route.params;
+
+    //function addMovieToWatchList() {
+    //    dbConnection.transaction(tx => {
+    //        tx.executeSql('INSERT INTO toWatchUserList (title, year, movieId) VALUES (?,?,?)', [movieDetails.title, movieDetails.year, movieDetails.movieId], () => console.log("row inserted"));
+    //    });
+    //}
 
     return(
         <ScrollView style={styles.detailsContainer}>
@@ -32,9 +37,99 @@ function DetailsPage({navigation}) {
                 <Text style={styles.detailsText}>Awards: {movieDetails.awards}</Text>
                 <Text style={styles.detailsText}>Actors: {movieDetails.actors}</Text>
             </View>
-            <Button title='Add to watch list' onPress={() => addMovieToWatchList()}/>
+            <Button title='Add to watch list' onPress={() => {}}/>
         </ScrollView>
     );
 }
 
 export default DetailsPage;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgb(10,10,10)'
+    },
+
+    text: {
+        color: "rgb(255,255,255)",
+        fontSize: 20
+    },
+
+    searchBar: {
+        borderWidth: 2,
+        borderRadius: 8,
+        color: 'white',
+        height: 38,
+        width: 200,
+        borderColor: 'rgb(168, 113, 10)',
+        backgroundColor: 'rgb(60,60,60)',
+        padding: 6
+    },
+
+    searchButton: {
+        borderWidth: 2,
+        borderColor: 'rgb(168, 113, 10)',
+        height: 30,
+        width: 80,
+        backgroundColor: 'rgb(168, 133, 10)',
+        borderRadius: 15,
+        fontSize: 30,
+        margin: 14,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+    poster: {
+        width: 150,
+        height: 'auto',
+        marginRight: 14,
+        marginLeft: 14,
+        marginBottom: 10,
+        justifyContent: 'center',
+    },
+
+    posterImage: {
+        width: 150,
+        height: 250
+    },
+
+    posterText: {
+        fontSize: 16,
+        color: 'white'
+    },
+
+    detailsContainer: {
+        flex: 1,
+        backgroundColor: 'rgb(10,10,10)'
+    },
+
+    detailsImageContainer: {
+        alignItems: 'center',
+        marginTop: 20,
+        marginBottom: 2
+    },
+
+    detailsImage: {
+        width: 300,
+        height: 300
+    },
+
+    detailsTextContainer: {
+        padding: 10
+    },
+
+    detailsMainText: {
+        fontSize: 20,
+        color: 'white',
+        marginTop: 5,
+        marginBottom: 4
+    },
+
+    detailsText: {
+        fontSize: 16,
+        color: 'white',
+        marginBottom: 4
+    }
+});
