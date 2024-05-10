@@ -2,15 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, TextInput, TouchableHighlight, Button, Image, ScrollView, FlatList} from 'react-native'
 import {getMoviesList} from './ToWatchDatabase.jsx';
 
-function ToWatchPage(navigation) {
+function ToWatchPage({navigation, route}) {
 
     const [list, setList] = useState([]);
 
     useEffect(() => {
-        const movies = getMoviesList();
-        console.log("movies: " + movies);
-        setList(movies);
-        console.log("list: " + list);
+        setList(getMoviesList());
     }, []);
 
     const renderItem = ({item, onPress}) => {
@@ -19,7 +16,7 @@ function ToWatchPage(navigation) {
                 underlayColor={'rgb(40,40,40)'}
                 style={{flex: 1}}
                 onPress={() => {
-                    alert("on press to watch");
+                    navigation.navigate("DetailsPage", {movieId: item.movieId});
                 }}>
 
                 <View style={{borderWidth: 2, padding: 10}}>

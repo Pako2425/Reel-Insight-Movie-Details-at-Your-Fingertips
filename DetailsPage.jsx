@@ -4,7 +4,13 @@ import {downloadMovieDetailsData} from './Logic.jsx';
 import {addMovie} from './ToWatchDatabase.jsx';
 
 function DetailsPage({navigation, route}) {
-    const {movieDetails} = route.params;
+    const {movieId} = route.params;
+    const [movieDetails, setMovieDetails] = useState([]);
+
+    useEffect(() => {
+        downloadMovieDetailsData(movieId).then(details => setMovieDetails(details));
+        console.log(movieId);
+    }, []);
 
     return(
         <ScrollView style={styles.detailsContainer}>

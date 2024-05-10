@@ -43,30 +43,26 @@ export function addMovie(title, year, movieId) {
 
 }
 
-export async function getMoviesList() {
+export function getMoviesList() {
+    const data = [];
     try {
-        const p = new Promise((resolve, reject) => {
-            dbConnection.transaction(txn => {
-                txn.executeSql('SELECT * FROM toWatchUserList',
-                [],
-                (sqlTxn, res) => {
-                    let data = [];
-                    let len = res.rows.length;
-                    for(let i = 0; i < len; i++) {
-                        data.push(res.rows.item(i));
-                    }
-                    console.log(data);
-                    return data;
-                });
+        dbConnection.transaction(txn => {
+            txn.executeSql('SELECT * FROM toWatchUserList',
+            [],
+            (sqlTxn, res) => {
+                let len = res.rows.length;
+                for(let i = 0; i < len; i++) {
+                    data.push(res.rows.item(i));
+                }
             });
         });
-
     }
     catch(error) {
         console.log(error.message);
         alert('Something goes wrong.');
-        return [];
     };
+
+    return data;
 }
 
 //function deleteMovie();
