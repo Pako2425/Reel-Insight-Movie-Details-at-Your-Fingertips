@@ -1,15 +1,10 @@
 import {useState, useEffect} from 'react';
 import {View, Text, TextInput, TouchableHighlight, Button, StyleSheet, FlatList, Image, ScrollView} from 'react-native';
 import {downloadMovieDetailsData} from './Logic.jsx';
+import {addMovie} from './ToWatchDatabase.jsx';
 
 function DetailsPage({navigation, route}) {
     const {movieDetails} = route.params;
-
-    //function addMovieToWatchList() {
-    //    dbConnection.transaction(tx => {
-    //        tx.executeSql('INSERT INTO toWatchUserList (title, year, movieId) VALUES (?,?,?)', [movieDetails.title, movieDetails.year, movieDetails.movieId], () => console.log("row inserted"));
-    //    });
-    //}
 
     return(
         <ScrollView style={styles.detailsContainer}>
@@ -37,7 +32,11 @@ function DetailsPage({navigation, route}) {
                 <Text style={styles.detailsText}>Awards: {movieDetails.awards}</Text>
                 <Text style={styles.detailsText}>Actors: {movieDetails.actors}</Text>
             </View>
-            <Button title='Add to watch list' onPress={() => {}}/>
+            <Button title='Add to watch list' onPress={() => {
+                    addMovie(movieDetails.title, movieDetails.year, movieDetails.movieId);
+                    console.log("active add Movie");
+                }}
+            />
         </ScrollView>
     );
 }

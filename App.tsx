@@ -8,23 +8,16 @@ import MainPage from './MainPage.jsx';
 import ResultsPage from './ResultsPage.jsx';
 import DetailsPage from './DetailsPage.jsx';
 import ToWatchPage from './ToWatchPage.jsx';
+import {init} from './ToWatchDatabase.jsx';
 
 function App(): React.JSX.Element {
-    const [movies, setMovies] = useState([]);
-    const [movieDetails, setDetails] = useState(null);
+    //const [movies, setMovies] = useState([]);
+    //const [movieDetails, setDetails] = useState(null);
 
     const Stack = createNativeStackNavigator();
-    //const dbConnection = SQLite.openDatabase({name: 'toWatchUserList', location: 'default'});
-
-    /*useEffect(() => {
-        dbConnection.transaction(tx => {
-            tx.executeSql(`CREATE TABLE IF NOT EXISTS toWatchUserList(
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                title TEXT,
-                year TEXT,
-                movieId TEXT)`, [], () => console.log("table created"));
-        });
-    }, []);*/
+    useEffect(() => {
+        init();
+    }, []);
 
     return(
         <NavigationContainer>
@@ -53,6 +46,8 @@ function App(): React.JSX.Element {
         </NavigationContainer>
     );
 }
+
+export default App;
 
 const styles = StyleSheet.create({
     container: {
@@ -143,5 +138,3 @@ const styles = StyleSheet.create({
         marginBottom: 4
     }
 });
-
-export default App;

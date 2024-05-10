@@ -1,19 +1,17 @@
+import React, {useState, useEffect} from 'react';
+import {View, Text, StyleSheet, TextInput, TouchableHighlight, Button, Image, ScrollView, FlatList} from 'react-native'
+import {getMoviesList} from './ToWatchDatabase.jsx';
+
 function ToWatchPage(navigation) {
 
-    const readData = () => {
-        let data = [];
-        dbConnection.transaction(txn => {
-            txn.executeSql('SELECT * FROM toWatchUserList',
-            [],
-            (sqlTxn, res) => {
-                let len = res.rows.length;
-                for(let i = 0; i < len; i++) {
-                    data.push(res.rows.item(i));
-                }
-            });
-        });
-        return data;
-    };
+    const [list, setList] = useState([]);
+
+    useEffect(() => {
+        const movies = getMoviesList();
+        console.log("movies: " + movies);
+        setList(movies);
+        console.log("list: " + list);
+    }, []);
 
     const renderItem = ({item, onPress}) => {
         return(
@@ -34,7 +32,7 @@ function ToWatchPage(navigation) {
     return(
             <View style={{flex: 1, backgroundColor: 'rgb(20,20,20)'}}>
             <FlatList
-                data={readData()}
+                data={list}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
             />

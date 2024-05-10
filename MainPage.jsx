@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {View, Text, TextInput, TouchableHighlight, Button, StyleSheet} from 'react-native';
 import {downloadMoviesData} from './Logic.jsx';
+import {showDatabase} from './ToWatchDatabase.jsx';
 
 function MainPage({navigation}) {
     const [searchBarValue, setSearchBarValue] = useState("");
@@ -32,7 +33,7 @@ function MainPage({navigation}) {
             >
             <Text style={{color: 'white', fontSize: 15}}>Search</Text>
             </TouchableHighlight>
-            <Button title='To watch' onPress={() => navigation.navigate("ResultsPage")}/>
+            <Button title='To watch' onPress={() => navigation.navigate('ToWatchPage')}/>
         </View>
     );
 }

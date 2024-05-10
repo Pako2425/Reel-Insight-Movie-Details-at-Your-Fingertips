@@ -27,6 +27,7 @@ export async function downloadMovieDetailsData(movieId) {
         let response = await fetch(apiRequest);
         let data = await response.json();
         let movieDetails = {
+            movieId: data["imdbID"],
             title: data["Title"],
             year: data["Year"],
             rated: data["Rated"],
