@@ -8,7 +8,7 @@ import {downloadMoviesData, downloadMovieDetailsData} from './Logic.jsx';
 //    }
 
 function ResultsPage({navigation, route}) {
-    const {movies} = route.params;
+
     const renderItem = ({item, onPress}) => {
         return(
             <View style={styles.poster}>
@@ -30,7 +30,7 @@ function ResultsPage({navigation, route}) {
     return(
         <View style={styles.container}>
             <FlatList
-                data={movies}
+                data={route.params.movies}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
                 numColumns={2}
