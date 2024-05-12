@@ -43,7 +43,7 @@ function DetailsPage({navigation, route}) {
                                 addMovie(movieDetails.title, movieDetails.year, movieDetails.movieId);
                                 console.log("active add Movie");
                             }}
-                            
+
                     />
                 </ScrollView>
             );
