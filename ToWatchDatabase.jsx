@@ -65,4 +65,14 @@ export function getMoviesList() {
     return data;
 }
 
-//function deleteMovie();
+export function deleteMovie(movieId) {
+    try {
+        dbConnection.transaction(tx => {
+           tx.executeSql('DELETE FROM toWatchUserList WHERE movieId = ?',
+           [movieId], () => console.log("Deleted movie with movieId: " + movieId);
+        });
+    }
+    catch(error) {
+        console.log("Catch delete exception: " + error.message);
+    }
+}
