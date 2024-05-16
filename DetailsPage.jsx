@@ -42,8 +42,25 @@ function DetailsPage({navigation, route}) {
                     </View>
                     <Button title='Add to watch list'
                             onPress={() => {
-                                addMovie(movieDetails.title, movieDetails.year, movieDetails.movieId);
-                                console.log("active add Movie");
+                                addMovie(movieDetails.title, movieDetails.year, movieDetails.movieId).then(
+                                    (result) => {
+                                        if(result) {
+                                            console.log("active add Movie");
+                                            alert("Added to watch list");
+                                        }
+                                        else {
+                                            alert("Can't add to watch list.");
+                                        }
+                                    }
+                                );
+                                //if(result) {
+                                //    console.log("active add Movie");
+                                //    alert("Added to watch list");
+                                //}
+                                //else {
+                                //    alert("Can't add to watch list.");
+                                //}
+
                             }}
 
                     />

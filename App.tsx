@@ -28,17 +28,26 @@ function App(): React.JSX.Element {
                 <Stack.Screen
                     name="ResultsPage"
                     component={ResultsPage}
-                    options={{title: " ", headerShown: true}}
+                    options={{title: " ",
+                              headerShown: true,
+                              headerStyle: {backgroundColor: 'rgb(8,8,8)'},
+                              headerTintColor: 'rgb(100,100,100)'}}
                 />
                 <Stack.Screen
                     name="DetailsPage"
                     component={DetailsPage}
-                    options={{title: " ", headerShown: true}}
+                    options={{title: " ",
+                              headerShown: true,
+                              headerStyle: {backgroundColor: 'rgb(8,8,8)'},
+                              headerTintColor: 'rgb(100,100,100)'}}
                 />
                 <Stack.Screen
                     name="ToWatchPage"
                     component={ToWatchPage}
-                    options={{title: " ", headerShown: true}}
+                    options={{title: " ",
+                              headerShown: true,
+                              headerStyle: {backgroundColor: 'rgb(8,8,8)'},
+                              headerTintColor: 'rgb(100,100,100)'}}
                 />
             </Stack.Navigator>
         </NavigationContainer>

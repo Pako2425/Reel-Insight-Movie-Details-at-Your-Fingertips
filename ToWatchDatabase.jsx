@@ -19,27 +19,29 @@ export function init() {
 
 }
 
-export function addMovie(title, year, movieId) {
-    const query = `INSERT INTO toWatchUserList(title, year, movieId)
-                   SELECT ?, ?, ? WHERE NOT EXISTS(
-                   SELECT 1 FROM toWatchUserList WHERE movieId = ?)`;
+export async function addMovie(title, year, movieId) {
+    return new Promise((resolve, reject) => {
+        const query = `INSERT INTO toWatchUserList(title, year, movieId)
+                       SELECT ?, ?, ? WHERE NOT EXISTS(
+                       SELECT 1 FROM toWatchUserList WHERE movieId = ?)`;
 
-    try {
         dbConnection.transaction(tx => {
             tx.executeSql(query, [title, year, movieId, movieId], () => {
                 console.log("row inserted");
+                resolve(true);
             }, (txError, error) => {
                 console.error("Error inserting row: ", error);
+                reject(false);
             });
-        }, (error) => {
-            console.error("Transaction error: ", error);
-        }, () => {
-            console.log("Transaction success!");
-        });
-    } catch (error) {
-        console.error("Caught an exception: ", error);
-    }
-
+            }, (error) => {
+                console.error("Transaction error: ", error);
+                reject(false);
+            }, () => {
+                console.log("Transaction success!");
+                resolve(true);
+            }
+        );
+    });
 }
 
 export function getMoviesList() {
