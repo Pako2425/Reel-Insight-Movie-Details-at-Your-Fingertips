@@ -2,10 +2,7 @@ import {useState, useEffect} from 'react';
 import {View, Text, TextInput, TouchableHighlight, Button, StyleSheet, FlatList, Image} from 'react-native';
 import {downloadMoviesData, downloadMovieDetailsData} from './Logic.jsx';
 
-//downloadMovieDetailsData(item.id).then(movieDetails => {
-//    if(movieDetails != null) {
-//        navigation.navigate("DetailsPage", {movieDetails});
-//    }
+import {styles} from './styles.js';
 
 function ResultsPage({navigation, route}) {
 
@@ -40,31 +37,3 @@ function ResultsPage({navigation, route}) {
 }
 
 export default ResultsPage;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgb(10,10,10)'
-    },
-
-    poster: {
-        width: 150,
-        height: 'auto',
-        marginRight: 14,
-        marginLeft: 14,
-        marginBottom: 10,
-        justifyContent: 'center',
-    },
-
-    posterImage: {
-        width: 150,
-        height: 250
-    },
-
-    posterText: {
-        fontSize: 16,
-        color: 'white'
-    }
-});

@@ -1,4 +1,3 @@
-import React from 'react';
 import SQLite from 'react-native-sqlite-storage';
 
 const dbConnection = SQLite.openDatabase({name: 'toWatchUserList', location: 'default'});
