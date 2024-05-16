@@ -30,7 +30,7 @@ function ResultsPage({navigation, route}) {
     return(
         <View style={styles.container}>
             <FlatList
-                data={route.params.movies}
+                data={route.params. movies}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
                 numColumns={2}
