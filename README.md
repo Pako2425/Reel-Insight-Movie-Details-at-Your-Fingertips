@@ -30,19 +30,19 @@ When you find interesting title you could add it to your 'to watch' list. Every 
 [apk-release.zip](https://github.com/user-attachments/files/15568393/apk-release.zip)
 
 ### Second way - download repository and build apk file.
-  ## 1. Required tools:
-    1. Node.js - necessary for running React Native commands and managing dependencies with npm. Install [Node.js](https://nodejs.org/en/download/package-manager/current)
-    2. React Native CLI - could you install `npm install -g react-native-cli`
-    3. Android Studio - Android Studio is essential for building Android applications. Install [Android Studio](https://developer.android.com/studio?hl=pl) and configure SDK.
-  
-  ## 2. Installing dependencies.
-    Go to main project directory `Reel-Insight-Movie-Details-at-Your-Fingertips`.
+## 1. Required tools:
+  1. Node.js - necessary for running React Native commands and managing dependencies with npm. Install [Node.js](https://nodejs.org/en/download/package-manager/current)
+  2. React Native CLI - could you install `npm install -g react-native-cli`
+  3. Android Studio - Android Studio is essential for building Android applications. Install [Android Studio](https://developer.android.com/studio?hl=pl) and configure SDK.
 
-  ## 3. Building the project.
-    Place your terminal directory to `android`.
-    
-    cd android
-    
-    For Windows: gradlew assembleRelease
-    For Linux: ./gradlew assembleRelease
+## 2. Installing dependencies.
+  Go to main project directory `Reel-Insight-Movie-Details-at-Your-Fingertips`.
+
+## 3. Building the project.
+  Place your terminal directory to `android`.
   
+  cd android
+  
+  For Windows: gradlew assembleRelease
+  For Linux: ./gradlew assembleRelease
+
