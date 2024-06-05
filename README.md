@@ -6,8 +6,8 @@ Reel Insight is an simple tool that enables users to discover and manage movies 
 ![reel-insight-graphic](https://github.com/Pako2425/Reel-Insight-Movie-Details-at-Your-Fingertips/assets/84390058/4d80076a-0a2f-4164-af3a-2db75e984454)
 
 Video presentation: [https://studio.youtube.com/video/EBraC-pFicc/edit](https://www.youtube.com/watch?v=EBraC-pFicc&ab_channel=PatrykKoci%C5%84ski)
-
-
+__
+__
 ## Main features
 ### Data download
 The app uses OMDb API (The Open Movie Database) https://www.omdbapi.com. The OMDb API is a RESTful web service to obtain movie information, all content and images on the site are contributed and maintained by its users.
@@ -17,11 +17,14 @@ As a user, you must enter the title of the movie/series or a keyword related to 
 
 ### To watch list
 When you find interesting title you could add it to your 'to watch' list. Every movie could be added only once. You could delete selected position whenever you want.
-
+__
+__
 ## Technology stack
--React Native
--Node.js
--Android Studio
+-React Native__
+-Node.js__
+-Android Studio__
+__
+__
 
 ## Some screen-shots
 ![main](https://github.com/Pako2425/Reel-Insight-Movie-Details-at-Your-Fingertips/assets/84390058/1f19d8c8-9f18-4db7-9c3c-5deb21347eea)
@@ -31,9 +34,8 @@ When you find interesting title you could add it to your 'to watch' list. Every 
 ![add-to-watch-list](https://github.com/Pako2425/Reel-Insight-Movie-Details-at-Your-Fingertips/assets/84390058/dba74365-2520-42ef-a194-9b0eea4c95d1)
 ![towatch-list](https://github.com/Pako2425/Reel-Insight-Movie-Details-at-Your-Fingertips/assets/84390058/f502c257-663f-4234-8680-ec4d45d62676)
 
-
-
-
+__
+__
 # How to run on your device
 ### First way - download zip file, un-zip and transfer .apk file on your phone.
 [apk-release.zip](https://github.com/user-attachments/files/15568393/apk-release.zip)
