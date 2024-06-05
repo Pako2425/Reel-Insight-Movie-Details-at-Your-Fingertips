@@ -11,7 +11,7 @@ Video presentation: [https://studio.youtube.com/video/EBraC-pFicc/edit](https://
 <br/>
 <br/>
 
-## Main features
+# Main features
 ### Data download
 The app uses OMDb API (The Open Movie Database) https://www.omdbapi.com. The OMDb API is a RESTful web service to obtain movie information, all content and images on the site are contributed and maintained by its users.
 
@@ -23,14 +23,14 @@ When you find interesting title you could add it to your 'to watch' list. Every 
 <br/>
 <br/>
 
-## Technology stack
+# Technology stack
 -React Native<br/>
 -Node.js<br/>
 -Android Studio<br/>
 <br/>
 <br/>
 
-## Some screen-shots
+# Some screen-shots
 ![main](https://github.com/Pako2425/Reel-Insight-Movie-Details-at-Your-Fingertips/assets/84390058/1f19d8c8-9f18-4db7-9c3c-5deb21347eea)
 ![main-search](https://github.com/Pako2425/Reel-Insight-Movie-Details-at-Your-Fingertips/assets/84390058/0363fdbb-1cf4-405e-8427-0be6cc235686)
 ![results](https://github.com/Pako2425/Reel-Insight-Movie-Details-at-Your-Fingertips/assets/84390058/24aff9ac-d30f-40d5-b3cb-4d053aa06044)
@@ -59,6 +59,6 @@ When you find interesting title you could add it to your 'to watch' list. Every 
   
     cd android
   
-  For Windows: gradlew assembleRelease
+  For Windows: gradlew assembleRelease <br/>
   For Linux: ./gradlew assembleRelease
 
