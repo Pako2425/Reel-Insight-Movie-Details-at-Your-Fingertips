@@ -18,7 +18,10 @@ As a user, you must enter the title of the movie/series or a keyword related to 
 ### To watch list
 When you find interesting title you could add it to your 'to watch' list. Every movie could be added only once. You could delete selected position whenever you want.
 
-
+## Technology stack
+-React Native
+-Node.js
+-Android Studio
 
 ## Some screen-shots
 ![main](https://github.com/Pako2425/Reel-Insight-Movie-Details-at-Your-Fingertips/assets/84390058/1f19d8c8-9f18-4db7-9c3c-5deb21347eea)
