@@ -1,5 +1,5 @@
 # Reel Insight - Movies at Your Fingertips
-
+<br/>
 ## Description
 Reel Insight is an simple tool that enables users to discover and manage movies in a simple and intuitive way. Designed with movie enthusiasts in mind, the application provides easy access to detailed movie information and allows users to create their own watchlists.
 
