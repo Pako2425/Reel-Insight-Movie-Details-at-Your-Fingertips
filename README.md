@@ -60,7 +60,10 @@ When you find interesting title you could add it to your 'to watch' list. Every 
     cd android
   
   For Windows: <br/> 
-    gradlew assembleRelease <br/>
+    
+    gradlew assembleRelease
+  
   For Linux: <br/>
+    
     ./gradlew assembleRelease
 
