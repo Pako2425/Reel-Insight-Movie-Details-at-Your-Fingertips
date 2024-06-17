@@ -7,6 +7,7 @@ Reel Insight is an simple tool that enables users to discover and manage movies 
 
 ![reel-insight-graphic](https://github.com/Pako2425/Reel-Insight-Movie-Details-at-Your-Fingertips/assets/84390058/4d80076a-0a2f-4164-af3a-2db75e984454)
 
+The application is waiting for verification from the Google Play Store
 Video presentation: [https://studio.youtube.com/video/EBraC-pFicc/edit](https://www.youtube.com/watch?v=EBraC-pFicc&ab_channel=PatrykKoci%C5%84ski)
 <br/>
 <br/>
